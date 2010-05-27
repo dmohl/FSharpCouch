@@ -1,0 +1,14 @@
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\bin\Debug\FSharpCouch.XML
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\bin\Debug\FSharpCouch.dll
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\bin\Debug\FSharpCouch.pdb
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\bin\Debug\Newtonsoft.Json.dll
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\obj\Debug\ResolveAssemblyReference.cache
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\obj\Debug\FSharpCouch.dll
+c:\users\dmohl\documents\visual studio 2010\Projects\FSharpCouch\FSharpCouch\obj\Debug\FSharpCouch.pdb
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\bin\Debug\FSharpCouch.XML
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\bin\Debug\FSharpCouch.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\bin\Debug\FSharpCouch.pdb
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.pdb

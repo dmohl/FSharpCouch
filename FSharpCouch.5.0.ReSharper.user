@@ -7,8 +7,24 @@
     </boolean>
   </SettingsComponent>
   <RecentFiles>
-    <RecentFiles />
-    <RecentEdits />
+    <RecentFiles>
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="225" fromTop="5" />
+      <File id="5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261/f:Module1.fs" caret="143" fromTop="5" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="2425" fromTop="11" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="970" fromTop="1" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="335" fromTop="1" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="21" fromTop="0" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="2258" fromTop="9" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="2583" fromTop="11" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="2583" fromTop="9" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="1518" fromTop="2" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="2091" fromTop="11" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="3078" fromTop="11" />
+      <File id="DA30BCAB-D6BD-4508-8C2A-FD6246766A29/f:FSharpCouch.fs" caret="3050" fromTop="9" />
+      <File id="5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261/f:Module1.fs" caret="143" fromTop="5" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />

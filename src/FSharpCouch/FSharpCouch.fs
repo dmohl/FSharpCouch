@@ -21,42 +21,48 @@ module FSharpCouch
                 use reader = new StreamReader(stream)
                 let contents = reader.ReadToEnd()
                 return contents }
-    let ProcessWriteRequest url methodName content contentType =
+    let ProcessPostRequest url methodName content contentType =
         async { let request = WriteRequest url methodName content contentType
                 let! response = AyncReadResponse(request) 
                 return response}
         |> Async.RunSynchronously
-    let ProcessReadRequest url =
+    let ProcessPutOrDeleteRequest url methodName =
+        async { let request = WebRequest.Create(string url)
+                request.Method <- methodName
+                let! response = AyncReadResponse(request) 
+                return response}
+        |> Async.RunSynchronously
+    let ProcessGetRequest url =
         async { let request = WebRequest.Create(string url)
                 let! response = AyncReadResponse(request) 
                 return response}
         |> Async.RunSynchronously
-    let BuildUrl server database =
-        server + "/" + database 
+    let BuildUrl (server:string) (database:string) =
+        server + "/" + database.ToLower() 
     let CreateDatabase server database =
-        let response = ProcessWriteRequest (BuildUrl server database) "PUT" "" "application/json"
-        match response with 
-        | _ when response = "{\"ok\":true}" -> failwith "Failed to create the database"
-        | _ -> response
+        try
+            ProcessPutOrDeleteRequest (BuildUrl server database) "PUT"
+        with
+        | e -> failwith e.Message
     let DeleteDatabase server database =
-        let response = ProcessWriteRequest (BuildUrl server database) "DELETE" "" "application/json"
-        match response with 
-        | _ when response = "{\"ok\":true}" -> failwith "Failed to delete the database"
-        | _ -> response
+        try
+            ProcessPutOrDeleteRequest (BuildUrl server database) "DELETE"
+        with
+        | e -> failwith e.Message
     let CreateDocument server database content = 
         let jsonContent = JsonConvert.SerializeObject content
-        ProcessWriteRequest (BuildUrl server database) "POST" jsonContent "application/json"
+        ProcessPostRequest (BuildUrl server database) "POST" jsonContent "application/json"
     let GetDatabases server =
-        ProcessReadRequest (server + "/_all_dbs")
+        ProcessGetRequest (server + "/_all_dbs")
         |> JsonConvert.DeserializeObject  
     let GetAllDocuments server database = 
-        ProcessReadRequest (BuildUrl server database) + "/_all_docs"
+        ProcessGetRequest (BuildUrl server database) + "/_all_docs"
         |> JsonConvert.DeserializeObject  
     let GetDocument server database documentId =
-        ProcessReadRequest (BuildUrl server database) + "/" + documentId 
+        ProcessGetRequest (BuildUrl server database) + "/" + documentId 
         |> JsonConvert.DeserializeObject 
     let DeleteDocument server database documentId =         
-        let response = ProcessWriteRequest (BuildUrl server database + "/" + documentId) "DELETE" "" "application/json"
-        match response with 
-        | _ when response = "{\"ok\":true}" -> failwith "Failed to delete the document"
-        | _ -> response
+        try
+            ProcessPutOrDeleteRequest (BuildUrl server database + "/" + documentId) "DELETE"
+        with
+        | e -> failwith e.Message

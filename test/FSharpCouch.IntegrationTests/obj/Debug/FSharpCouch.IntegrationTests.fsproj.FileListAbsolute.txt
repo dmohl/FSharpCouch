@@ -1,0 +1,12 @@
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.XML
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.pdb
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\nunit.framework.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\SpecUnit.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.pdb
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.xml
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.dll
+C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.pdb

@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpCouch", "FSharpCouch\FSharpCouch.fsproj", "{DA30BCAB-D6BD-4508-8C2A-FD6246766A29}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpCouch", "src\FSharpCouch\FSharpCouch.fsproj", "{DA30BCAB-D6BD-4508-8C2A-FD6246766A29}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpCouch.IntegrationTests", "test\FSharpCouch.IntegrationTests\FSharpCouch.IntegrationTests.fsproj", "{5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{DA30BCAB-D6BD-4508-8C2A-FD6246766A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA30BCAB-D6BD-4508-8C2A-FD6246766A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA30BCAB-D6BD-4508-8C2A-FD6246766A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B62A6CF-7854-4EBC-BAB9-1A9A85F3F261}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

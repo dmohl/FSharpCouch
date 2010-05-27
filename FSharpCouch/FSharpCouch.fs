@@ -33,15 +33,6 @@ module FSharpCouch
         |> Async.RunSynchronously
     let BuildUrl server database =
         server + "/" + database 
-    let CreateDocument server database content = 
-        let jsonContent = JsonConvert.SerializeObject content
-        ProcessWriteRequest (BuildUrl server database) "POST" jsonContent "application/json"
-    let GetDatabases server =
-        let response = ProcessReadRequest (server + "/_all_dbs")
-        JsonConvert.DeserializeObject response 
-    let GetAllDocuments server database = 
-        let response = ProcessReadRequest (BuildUrl server database) + "/_all_docs"
-        JsonConvert.DeserializeObject response 
     let CreateDatabase server database =
         let response = ProcessWriteRequest (BuildUrl server database) "PUT" "" "application/json"
         match response with 
@@ -52,4 +43,20 @@ module FSharpCouch
         match response with 
         | _ when response = "{\"ok\":true}" -> failwith "Failed to delete the database"
         | _ -> response
-     
+    let CreateDocument server database content = 
+        let jsonContent = JsonConvert.SerializeObject content
+        ProcessWriteRequest (BuildUrl server database) "POST" jsonContent "application/json"
+    let GetDatabases server =
+        ProcessReadRequest (server + "/_all_dbs")
+        |> JsonConvert.DeserializeObject  
+    let GetAllDocuments server database = 
+        ProcessReadRequest (BuildUrl server database) + "/_all_docs"
+        |> JsonConvert.DeserializeObject  
+    let GetDocument server database documentId =
+        ProcessReadRequest (BuildUrl server database) + "/" + documentId 
+        |> JsonConvert.DeserializeObject 
+    let DeleteDocument server database documentId =         
+        let response = ProcessWriteRequest (BuildUrl server database + "/" + documentId) "DELETE" "" "application/json"
+        match response with 
+        | _ when response = "{\"ok\":true}" -> failwith "Failed to delete the document"
+        | _ -> response

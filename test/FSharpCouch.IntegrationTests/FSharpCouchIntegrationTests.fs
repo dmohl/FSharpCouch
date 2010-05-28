@@ -1,6 +1,7 @@
 ﻿module FSharpCouchIntegrationTests
     open FSharpCouch
     open System
+    open System.Collections.Generic
     open NUnit.Framework
     open SpecUnit
 

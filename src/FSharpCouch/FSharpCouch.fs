@@ -52,12 +52,6 @@ module FSharpCouch
     let CreateDocument server database content = 
         let jsonContent = JsonConvert.SerializeObject content
         ProcessPostRequest (BuildUrl server database) "POST" jsonContent "application/json"
-    let GetDatabases server =
-        ProcessGetRequest (server + "/_all_dbs")
-        |> JsonConvert.DeserializeObject 
-    let GetAllDocuments server database = 
-        ProcessGetRequest ((BuildUrl server database) + "/_all_docs")
-        |> JsonConvert.DeserializeObject  
     let GetDocument<'a> server database documentId =
         let response = ProcessGetRequest ((BuildUrl server database) + "/" + documentId) 
         JsonConvert.DeserializeObject(response, typeof<'a>)

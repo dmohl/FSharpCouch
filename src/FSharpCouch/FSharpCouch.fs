@@ -54,15 +54,15 @@ module FSharpCouch
         ProcessPostRequest (BuildUrl server database) "POST" jsonContent "application/json"
     let GetDatabases server =
         ProcessGetRequest (server + "/_all_dbs")
-        |> JsonConvert.DeserializeObject  
+        |> JsonConvert.DeserializeObject 
     let GetAllDocuments server database = 
         ProcessGetRequest ((BuildUrl server database) + "/_all_docs")
         |> JsonConvert.DeserializeObject  
-    let GetDocument server database documentId =
-        ProcessGetRequest ((BuildUrl server database) + "/" + documentId) 
-        |> JsonConvert.DeserializeObject
-    let DeleteDocument server database documentId =         
+    let GetDocument<'a> server database documentId =
+        let response = ProcessGetRequest ((BuildUrl server database) + "/" + documentId) 
+        JsonConvert.DeserializeObject(response, typeof<'a>)
+    let DeleteDocument server database documentId revision =         
         try
-            ProcessPutOrDeleteRequest ((BuildUrl server database) + "/" + documentId) "DELETE"
+            ProcessPutOrDeleteRequest ((BuildUrl server database) + "/" + documentId + "?rev=" + revision) "DELETE"
         with
         | e -> failwith e.Message

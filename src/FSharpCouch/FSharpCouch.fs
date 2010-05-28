@@ -54,7 +54,11 @@ module FSharpCouch
         ProcessPostRequest (BuildUrl server database) "POST" jsonContent "application/json"
     let GetDocument<'a> server database documentId =
         let response = ProcessGetRequest ((BuildUrl server database) + "/" + documentId) 
-        JsonConvert.DeserializeObject(response, typeof<'a>)
+        JsonConvert.DeserializeObject(response, typeof<'a>) :?> 'a
+    let GetDocuments<'a> server database documentIds =
+        Async.Parallel [for documentId in documentIds -> 
+                            async {return GetDocument<'a> server database documentId }]
+        |> Async.RunSynchronously
     let DeleteDocument server database documentId revision =         
         try
             ProcessPutOrDeleteRequest ((BuildUrl server database) + "/" + documentId + "?rev=" + revision) "DELETE"

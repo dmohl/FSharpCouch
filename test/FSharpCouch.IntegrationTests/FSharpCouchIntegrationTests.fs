@@ -37,7 +37,7 @@
                 x.getDocumentResult._id.ShouldEqual x.fakeRecord._id |> ignore
 
     [<TestFixture>]      
-    type FSharpCouch__when_testing_get_multiple_documents () =   
+    type FSharpCouch__when_getting_multiple_documents () =   
         [<DefaultValue(false)>]  
         val mutable getDocumentsResult : TestExistingRecord seq
         [<DefaultValue(false)>]
@@ -78,7 +78,6 @@
                 FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
                 FSharpCouch.CreateDocument CouchDbServer Database fakeRecord2 |> ignore 
                 FSharpCouch.CreateDocument CouchDbServer Database fakeRecord3 |> ignore 
-                //FSharpCouch.GetAllDocuments<TestExistingRecord> CouchDbServer Database |> ignore
                 x.getDocumentsResult <- FSharpCouch.GetAllDocuments<TestExistingRecord> CouchDbServer Database
                 System.Threading.Thread.Sleep(100)
                 FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore

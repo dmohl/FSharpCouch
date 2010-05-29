@@ -25,13 +25,15 @@
         inherit SpecUnit.ContextSpecification()
             override x.Because () =
                 x.fakeRecord <- {_id = Guid.NewGuid().ToString(); SomeValue = "Test"}
-                FSharpCouch.CreateDatabase CouchDbServer Database |> ignore
-                FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
-                x.getDocumentResult <- FSharpCouch.GetDocument<TestExistingRecord> CouchDbServer Database x.fakeRecord._id
-                System.Threading.Thread.Sleep(100)
-                FSharpCouch.DeleteDocument CouchDbServer Database x.fakeRecord._id x.getDocumentResult._rev |> ignore
-                System.Threading.Thread.Sleep(100)
-                FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore
+                try
+                    FSharpCouch.CreateDatabase CouchDbServer Database |> ignore
+                    FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
+                    x.getDocumentResult <- FSharpCouch.GetDocument<TestExistingRecord> CouchDbServer Database x.fakeRecord._id
+                    System.Threading.Thread.Sleep(100)
+                    FSharpCouch.DeleteDocument CouchDbServer Database x.fakeRecord._id x.getDocumentResult._rev |> ignore
+                finally
+                    System.Threading.Thread.Sleep(100)
+                    FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore
             [<Test>]    
             member x.should_have_a_document_with_the_expected_id () =    
                 x.getDocumentResult._id.ShouldEqual x.fakeRecord._id |> ignore
@@ -49,14 +51,16 @@
                 x.fakeRecord <- {_id = Guid.NewGuid().ToString(); SomeValue = "Test"}
                 let fakeRecord2 = {x.fakeRecord with _id = Guid.NewGuid().ToString()}
                 let fakeRecord3 = {x.fakeRecord with _id = Guid.NewGuid().ToString()}
-                FSharpCouch.CreateDatabase CouchDbServer Database |> ignore
-                FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
-                FSharpCouch.CreateDocument CouchDbServer Database fakeRecord2 |> ignore 
-                FSharpCouch.CreateDocument CouchDbServer Database fakeRecord3 |> ignore 
-                let documentIds = [x.fakeRecord._id; fakeRecord2._id; fakeRecord3._id]
-                x.getDocumentsResult <- FSharpCouch.GetDocuments<TestExistingRecord> CouchDbServer Database documentIds
-                System.Threading.Thread.Sleep(100)
-                FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore
+                try
+                    FSharpCouch.CreateDatabase CouchDbServer Database |> ignore
+                    FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
+                    FSharpCouch.CreateDocument CouchDbServer Database fakeRecord2 |> ignore 
+                    FSharpCouch.CreateDocument CouchDbServer Database fakeRecord3 |> ignore 
+                    let documentIds = [x.fakeRecord._id; fakeRecord2._id; fakeRecord3._id]
+                    x.getDocumentsResult <- FSharpCouch.GetDocuments<TestExistingRecord> CouchDbServer Database documentIds
+                finally
+                    System.Threading.Thread.Sleep(200)
+                    FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore
             [<Test>]    
             member x.should_have_3_documents () =    
                 (Seq.length x.getDocumentsResult).ShouldEqual 3 |> ignore
@@ -74,13 +78,15 @@
                 x.fakeRecord <- {_id = Guid.NewGuid().ToString(); SomeValue = "Test"}
                 let fakeRecord2 = {x.fakeRecord with _id = Guid.NewGuid().ToString()}
                 let fakeRecord3 = {x.fakeRecord with _id = Guid.NewGuid().ToString()}
-                FSharpCouch.CreateDatabase CouchDbServer Database |> ignore
-                FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
-                FSharpCouch.CreateDocument CouchDbServer Database fakeRecord2 |> ignore 
-                FSharpCouch.CreateDocument CouchDbServer Database fakeRecord3 |> ignore 
-                x.getDocumentsResult <- FSharpCouch.GetAllDocuments<TestExistingRecord> CouchDbServer Database
-                System.Threading.Thread.Sleep(100)
-                FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore
+                try 
+                    FSharpCouch.CreateDatabase CouchDbServer Database |> ignore
+                    FSharpCouch.CreateDocument CouchDbServer Database x.fakeRecord |> ignore 
+                    FSharpCouch.CreateDocument CouchDbServer Database fakeRecord2 |> ignore 
+                    FSharpCouch.CreateDocument CouchDbServer Database fakeRecord3 |> ignore 
+                    x.getDocumentsResult <- FSharpCouch.GetAllDocuments<TestExistingRecord> CouchDbServer Database
+                finally
+                    System.Threading.Thread.Sleep(100)
+                    FSharpCouch.DeleteDatabase CouchDbServer Database |> ignore
             [<Test>]    
             member x.should_have_3_documents () =    
                 (Seq.length x.getDocumentsResult).ShouldEqual 3 |> ignore

@@ -6,6 +6,7 @@ module FSharpCouch
     open System.Text
     open System.IO
     open Newtonsoft.Json
+    open Newtonsoft.Json.Linq
 
     let WriteRequest url methodName content contentType =
         let request = WebRequest.Create(string url)
@@ -38,7 +39,7 @@ module FSharpCouch
                 return response}
         |> Async.RunSynchronously
     let BuildUrl (server:string) (database:string) =
-        server + "/" + database.ToLower() 
+        server + "/" + database.ToLower()
     let CreateDatabase server database =
         try
             ProcessPutOrDeleteRequest (BuildUrl server database) "PUT"
@@ -58,6 +59,12 @@ module FSharpCouch
     let GetDocuments<'a> server database documentIds =
         Async.Parallel [for documentId in documentIds -> 
                             async {return GetDocument<'a> server database documentId }]
+        |> Async.RunSynchronously
+    let GetAllDocuments<'a> server database =
+        let jsonObject = ProcessGetRequest ((BuildUrl server database) + "/_all_docs")
+                         |> JObject.Parse
+        Async.Parallel [for row in jsonObject.["rows"] -> 
+                            async {return JsonConvert.DeserializeObject<'a>(row.ToString())}]
         |> Async.RunSynchronously
     let DeleteDocument server database documentId revision =         
         try

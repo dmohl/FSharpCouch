@@ -22,36 +22,42 @@ module FSharpCouch
                 use reader = new StreamReader(stream)
                 let contents = reader.ReadToEnd()
                 return contents }
-    let ProcessPostRequest url methodName content contentType =
-        WriteRequest url methodName content contentType 
-        |> AsyncReadResponse
-        |> Async.RunSynchronously
-    let ProcessGetPutOrDeleteRequest url methodName =
-        let request = WebRequest.Create(string url)
-        request.Method <- methodName
-        AsyncReadResponse request 
-        |> Async.RunSynchronously
-//    let ProcessGetRequest url =
-//        WebRequest.Create(string url)
+//    let ProcessPostRequest url methodName content contentType =
+//        WriteRequest url methodName content contentType 
 //        |> AsyncReadResponse
 //        |> Async.RunSynchronously
+//    let ProcessGetPutOrDeleteRequest url methodName =
+//        let request = WebRequest.Create(string url)
+//        request.Method <- methodName
+//        AsyncReadResponse request 
+//        |> Async.RunSynchronously
+    let ProcessRequest url methodName content contentType =
+        match methodName with
+        | "POST" -> 
+            WriteRequest url methodName content contentType 
+        | _ -> 
+            let req = WebRequest.Create(string url)
+            req.Method <- methodName
+            req
+        |> AsyncReadResponse 
+        |> Async.RunSynchronously
     let BuildUrl (server:string) (database:string) =
         server + "/" + database.ToLower()
     let CreateDatabase server database =
-        ProcessGetPutOrDeleteRequest (BuildUrl server database) "PUT"
+        ProcessRequest (BuildUrl server database) "PUT" "" ""
     let DeleteDatabase server database =
-        ProcessGetPutOrDeleteRequest (BuildUrl server database) "DELETE"
+        ProcessRequest (BuildUrl server database) "DELETE" "" ""
     let CreateDocument server database content = 
         let jsonContent = JsonConvert.SerializeObject content
-        ProcessPostRequest (BuildUrl server database) "POST" jsonContent "application/json"
+        ProcessRequest (BuildUrl server database) "POST" jsonContent "application/json"
     let GetDocument<'a> server database documentId =
-        let response = ProcessGetPutOrDeleteRequest ((BuildUrl server database) + "/" + documentId) "GET"
+        let response = ProcessRequest ((BuildUrl server database) + "/" + documentId) "GET" "" ""
         JsonConvert.DeserializeObject<'a> response
     let GetAllDocuments<'a> server database =
-        let jsonObject = ProcessGetPutOrDeleteRequest ((BuildUrl server database) + "/_all_docs") "GET"
+        let jsonObject = ProcessRequest ((BuildUrl server database) + "/_all_docs") "GET" "" ""
                          |> JObject.Parse
         Async.Parallel [for row in jsonObject.["rows"] -> 
                             async {return JsonConvert.DeserializeObject<'a>(row.ToString())}]
         |> Async.RunSynchronously
     let DeleteDocument server database documentId revision =         
-        ProcessGetPutOrDeleteRequest ((BuildUrl server database) + "/" + documentId + "?rev=" + revision) "DELETE"
+        ProcessRequest ((BuildUrl server database) + "/" + documentId + "?rev=" + revision) "DELETE" "" ""

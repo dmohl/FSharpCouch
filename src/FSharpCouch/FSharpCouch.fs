@@ -22,15 +22,6 @@ module FSharpCouch
                 use reader = new StreamReader(stream)
                 let contents = reader.ReadToEnd()
                 return contents }
-//    let ProcessPostRequest url methodName content contentType =
-//        WriteRequest url methodName content contentType 
-//        |> AsyncReadResponse
-//        |> Async.RunSynchronously
-//    let ProcessGetPutOrDeleteRequest url methodName =
-//        let request = WebRequest.Create(string url)
-//        request.Method <- methodName
-//        AsyncReadResponse request 
-//        |> Async.RunSynchronously
     let ProcessRequest url methodName content contentType =
         match methodName with
         | "POST" -> 

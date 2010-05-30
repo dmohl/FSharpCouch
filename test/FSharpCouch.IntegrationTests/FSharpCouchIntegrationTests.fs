@@ -30,11 +30,16 @@
             Async.Parallel [for command in commands -> 
                                 async { command |> ignore } ]                          
             |> Async.RunSynchronously |> ignore
+        let KillDatabase () =
+            try
+                DeleteDatabase CouchDbServer Database |> ignore
+            with
+            | _ -> "do nothing" |> ignore
         [<TestFixtureTearDown>]
-        member x.CleanUpContext () =
-            DeleteDatabase CouchDbServer Database |> ignore
+        member x.CleanUpContext () = KillDatabase()
         [<TestFixtureSetUp>]
         member x.Context () =
+            KillDatabase()
             x.fakeRecord <- {_id = Guid.NewGuid().ToString(); SomeValue = "Test"}
             let fakeRecord2 = {x.fakeRecord with _id = Guid.NewGuid().ToString()}
             let fakeRecord3 = {x.fakeRecord with _id = Guid.NewGuid().ToString()} 

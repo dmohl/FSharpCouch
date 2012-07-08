@@ -78,14 +78,13 @@
         createDatabase server database
         processRequest (buildUrl server database) "DELETE" "" "" |> ignore
     
-    let createDocument server database content = 
+    let createDocument<'a> server database (content:'a) = 
         createDatabase server database
         let response = 
             content |> toJson
             |> processRequest (buildUrl server database) "POST" "application/json"
-        let result = response |> fromJson<'a>
-        let json = response |> JObject.Parse
-        { id = json.["id"].ToString(); rev = json.["rev"].ToString(); body = result }
+            |> JObject.Parse
+        { id = response.["id"].ToString(); rev = response.["rev"].ToString(); body = content }
     
     let getDocument<'a> server database documentId =
         createDatabase server database

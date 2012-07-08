@@ -19,6 +19,11 @@ let ``When creating a document, it should succeed without an error and without c
 
     let result = { FirstName = "John"; LastName = "Doe" }
                  |> createDocument couchUrl "people"
+    result.body.FirstName |> should equal "John" 
+    result.body.LastName |> should equal "Doe" 
+    result.id |> should not' (be Null)
+    result.rev |> should not' (be Null)
+
     let createdPerson = getDocument<Person> couchUrl "people" result.id 
     createdPerson.body.FirstName |> should equal "John" 
     createdPerson.body.LastName |> should equal "Doe" 

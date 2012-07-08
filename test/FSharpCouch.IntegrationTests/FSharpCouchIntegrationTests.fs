@@ -1,64 +1,49 @@
-﻿module FSharpCouchIntegrationTests
-    open FSharpCouch
-    open System
-    open System.Collections.Generic
-    open NUnit.Framework
-    open SpecUnit
+﻿module TestFSharpCouch
 
-    type TestRecord =
-        { _id : string
-          SomeValue : string }
+open FSharpCouch
+open NUnit.Framework
+open FsUnit
+
+type Person = {
+    FirstName : string
+    LastName : string
+}
+
+let couchUrl = "http://localhost:5984"
+
+[<Test>]
+let ``When creating a document, it should succeed without an error and without creating the db first``() = 
+    deleteDatabase couchUrl "people"
+    createDatabase couchUrl "people"
+    deleteDatabase couchUrl "people"
+
+    let result = { FirstName = "John"; LastName = "Doe" }
+                 |> createDocument couchUrl "people"
+    let createdPerson = getDocument<Person> couchUrl "people" result.id 
+    createdPerson.body.FirstName |> should equal "John" 
+    createdPerson.body.LastName |> should equal "Doe" 
+    deleteDatabase couchUrl "people"
+
+[<Test>]
+let ``When getting multiple documents, it should succeed with returning the expected results then removing everything``() = 
+    deleteDatabase couchUrl "test"
+    let result = 
+        { FirstName = "Test"; LastName = "Test" }
+        |> FSharpCouch.createDocument couchUrl "test"
+
+    let result2 = 
+        {  FirstName = "Test2"; LastName = "Test2" }
+        |> FSharpCouch.createDocument couchUrl "test"
+
+    let allDocs = FSharpCouch.getAllDocuments<Person> couchUrl "test"
+
+    allDocs |> should haveLength 2
+    let testOneDoc = Seq.head allDocs
+    testOneDoc.id |> should equal result.id
+    testOneDoc.body.FirstName |> should equal "Test"
     
-    type TestExistingRecord =
-        { _id : string
-          _rev : string
-          SomeValue : string }
+    deleteDocument couchUrl "test" result.id result.rev
 
-    [<TestFixture>]      
-    type FSharpCouch__when_testing_full_database_and_document_cylce () =   
-        [<DefaultValue(false)>]  
-        val mutable getDocumentsResult : TestExistingRecord seq
-        [<DefaultValue(false)>]  
-        val mutable getAllDocumentsResult : TestExistingRecord seq
-        [<DefaultValue(false)>]  
-        val mutable getDocumentResult : TestExistingRecord
-        [<DefaultValue(false)>]
-        val mutable fakeRecord : TestRecord
-        let CouchDbServer = "http://localhost:5984"
-        let Database = "FSharpCouchTest"
-        let ProcessCommands commands =
-            Async.Parallel [for command in commands -> 
-                                async { command |> ignore } ]                          
-            |> Async.RunSynchronously |> ignore
-        let KillDatabase () =
-            try
-                DeleteDatabase CouchDbServer Database |> ignore
-            with
-            | _ -> "do nothing" |> ignore
-        [<TestFixtureTearDown>]
-        member x.CleanUpContext () = KillDatabase()
-        [<TestFixtureSetUp>]
-        member x.Context () =
-            KillDatabase()
-            x.fakeRecord <- {_id = Guid.NewGuid().ToString(); SomeValue = "Test"}
-            let fakeRecord2 = {x.fakeRecord with _id = Guid.NewGuid().ToString()}
-            let fakeRecord3 = {x.fakeRecord with _id = Guid.NewGuid().ToString()} 
-            CreateDatabase CouchDbServer Database |> ignore
-            let createCommands = 
-                [ CreateDocument CouchDbServer Database x.fakeRecord
-                  CreateDocument CouchDbServer Database fakeRecord2
-                  CreateDocument CouchDbServer Database fakeRecord3 ]
-            ProcessCommands createCommands
-            let getCommands = 
-                [ x.getDocumentResult <- 
-                      GetDocument<TestExistingRecord> CouchDbServer Database x.fakeRecord._id
-                  x.getAllDocumentsResult <- 
-                      GetAllDocuments<TestExistingRecord> CouchDbServer Database ]
-            ProcessCommands getCommands
-            DeleteDocument CouchDbServer Database x.fakeRecord._id x.getDocumentResult._rev |> ignore
-        [<Test>]    
-        member x.should_have_a_document_with_the_expected_id () =    
-            x.getDocumentResult._id.ShouldEqual x.fakeRecord._id |> ignore
-        [<Test>]    
-        member x.should_have_3_documents_from_get_all () =    
-            (Seq.length x.getAllDocumentsResult).ShouldEqual 3 |> ignore
+    deleteDatabase couchUrl "test"
+
+

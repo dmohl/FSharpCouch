@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>FSharpCouch</id>
+    <version>0.2.0.0</version>
+	<dependencies>
+      <dependency id="Newtonsoft.Json" version="4.5.7" />
+    </dependencies>
+    <authors>Daniel Mohl</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FSharpCouch is a simple wrapper around the CouchDB HTTP API.</description>
+    <summary>
+	FSharpCouch is a simple wrapper around the CouchDB HTTP API.
+    </summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/dmohl/FSharpCouch</projectUrl> 
+    <licenseUrl>https://github.com/dmohl/FSharpCouch/blob/master/MIT.License.txt</licenseUrl>
+	<tags>F# couchdb nosql fsharp</tags>
+  </metadata>
+  <files>
+	  <file src="Lib\*.*" target="Lib" />
+	  <file src="Tools\*.*" target="tools" />
+  </files>
+</package>

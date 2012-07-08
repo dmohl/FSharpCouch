@@ -12,3 +12,11 @@ C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch
 C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.dll
 C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.pdb
+C:\git\FSharpCouch\src\FSharpCouch\bin\Debug\FSharpCouch.XML
+C:\git\FSharpCouch\src\FSharpCouch\bin\Debug\FSharpCouch.dll
+C:\git\FSharpCouch\src\FSharpCouch\bin\Debug\FSharpCouch.pdb
+C:\git\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.fsprojResolveAssemblyReference.cache
+C:\git\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.dll
+C:\git\FSharpCouch\src\FSharpCouch\obj\Debug\FSharpCouch.pdb
+C:\git\FSharpCouch\src\FSharpCouch\bin\Debug\Newtonsoft.Json.dll
+C:\git\FSharpCouch\src\FSharpCouch\bin\Debug\Newtonsoft.Json.xml

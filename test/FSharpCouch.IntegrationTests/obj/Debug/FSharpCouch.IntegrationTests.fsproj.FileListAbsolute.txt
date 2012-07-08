@@ -10,3 +10,18 @@ C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouc
 C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.dll
 C:\Users\dmohl\Documents\Visual Studio 2010\Projects\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.pdb
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.XML
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.pdb
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\nunit.framework.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\Newtonsoft.Json.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.pdb
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.xml
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.fsprojResolveAssemblyReference.cache
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Debug\FSharpCouch.IntegrationTests.pdb
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FSharpCouch.IntegrationTests.dll.config
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\FsUnit.NUnit.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\nunit.framework.xml
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Debug\Newtonsoft.Json.xml

@@ -1,0 +1,8 @@
+_ReSharper.Fog
+*.suo
+*.user
+*.sln.docstates
+*.nupkg
+*/bin
+*/obj
+*/csx

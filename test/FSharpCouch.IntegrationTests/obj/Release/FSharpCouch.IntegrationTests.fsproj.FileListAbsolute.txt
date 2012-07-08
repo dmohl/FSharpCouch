@@ -1,0 +1,15 @@
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.IntegrationTests.dll.config
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.IntegrationTests.XML
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.IntegrationTests.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.IntegrationTests.pdb
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FsUnit.NUnit.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\nunit.framework.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\Newtonsoft.Json.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.pdb
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\FSharpCouch.xml
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\nunit.framework.xml
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\bin\Release\Newtonsoft.Json.xml
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Release\FSharpCouch.IntegrationTests.fsprojResolveAssemblyReference.cache
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Release\FSharpCouch.IntegrationTests.dll
+C:\git\FSharpCouch\test\FSharpCouch.IntegrationTests\obj\Release\FSharpCouch.IntegrationTests.pdb

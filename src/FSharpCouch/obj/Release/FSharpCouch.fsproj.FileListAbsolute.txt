@@ -1,0 +1,8 @@
+C:\git\FSharpCouch\src\FSharpCouch\bin\Release\FSharpCouch.XML
+C:\git\FSharpCouch\src\FSharpCouch\bin\Release\FSharpCouch.dll
+C:\git\FSharpCouch\src\FSharpCouch\bin\Release\FSharpCouch.pdb
+C:\git\FSharpCouch\src\FSharpCouch\bin\Release\Newtonsoft.Json.dll
+C:\git\FSharpCouch\src\FSharpCouch\bin\Release\Newtonsoft.Json.xml
+C:\git\FSharpCouch\src\FSharpCouch\obj\Release\FSharpCouch.dll
+C:\git\FSharpCouch\src\FSharpCouch\obj\Release\FSharpCouch.pdb
+C:\git\FSharpCouch\src\FSharpCouch\obj\Release\FSharpCouch.fsprojResolveAssemblyReference.cache

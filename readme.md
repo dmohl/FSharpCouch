@@ -1,3 +1,5 @@
+The main page for FSharpCouch can be found at http://dmohl.github.com/FSharpCouch/.
+
 FSharpCouch
 =======
 

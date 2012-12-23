@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FSharpCouch by dmohl</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/dmohl/FSharpCouch">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/dmohl/FSharpCouch/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/dmohl/FSharpCouch/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>FSharpCouch</h1>
+          <p>A port of SharpCouch to F# (http://code.google.com/p/couchbrowse/source/browse/trunk/SharpCouch/SharpCouch.cs)</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/dmohl">dmohl</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>FSharpCouch</h1>
+
+<p><strong>FSharpCouch</strong> is a fairly simple wrapper around many of the most common aspects of the CouchDB API. It provides an API that works well with F# records, function composition, etc.</p>
+
+<h1>How To Get It</h1>
+
+<p>FSharpCouch is available on NuGet Gallery as id FSharpCouch.</p>
+
+<h1>Getting Started</h1>
+
+<p>Here are a few examples to get you started with using FSharpCouch:</p>
+
+<pre><code>type Person = {
+    FirstName : string
+    LastName : string
+}
+
+let couchUrl = "http://localhost:5984"
+let databaseName = "people"
+</code></pre>
+
+<p>Create a document (if the database doesn't exist, it will be created):</p>
+
+<pre><code>let result = { FirstName = "John"; LastName = "Doe" }
+             |&gt; createDocument couchUrl databaseName
+</code></pre>
+
+<p>Get a document:</p>
+
+<pre><code>let createdPerson = getDocument&lt;Person&gt; couchUrl databaseName result.id 
+</code></pre>
+
+<p>Get all documents:</p>
+
+<pre><code>let allDocs = FSharpCouch.getAllDocuments&lt;Person&gt; couchUrl databaseName
+</code></pre>
+
+<p>Delete a document:</p>
+
+<pre><code>deleteDocument couchUrl documentName result.id result.rev   
+</code></pre>
+
+<p>Create a database: </p>
+
+<pre><code>createDatabase couchUrl databaseName
+</code></pre>
+
+<p>Delete a database:</p>
+
+<pre><code>deleteDatabase couchUrl databaseName
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
